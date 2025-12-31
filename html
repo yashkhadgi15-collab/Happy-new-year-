@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year, Mannu! 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+        body { margin: 0; font-family: 'Poppins', sans-serif; overflow: hidden; background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); background-size: 400% 400%; animation: gradientBG 15s ease infinite; }
+        @keyframes gradientBG { 0% {background-position: 0% 50%;} 50% {background-position: 100% 50%;} 100% {background-position: 0% 50%;} }
+        .container { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; text-align: center; color: white; position: relative; }
+        h1 { font-family: 'Dancing Script', cursive; font-size: 4rem; margin: 0; text-shadow: 0 0 20px rgba(255,255,255,0.8); animation: glow 2s ease-in-out infinite alternate; }
+        @keyframes glow { from { text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de; } to { text-shadow: 0 0 20px #fff, 0 0 30px #ff00de, 0 0 50px #ff00de; } }
+        p { font-size: 1.5rem; margin: 20px 0; opacity: 0; animation: fadeInUp 1s ease forwards; }
+        .heart { font-size: 3rem; animation: heartbeat 1.5s ease-in-out infinite; }
+        @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        .fireworks { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+        .snowflake { position: absolute; color: #fff; font-size: 20px; animation: snowfall linear infinite; }
+        @keyframes snowfall { to { transform: translateY(100vh) rotate(360deg); opacity: 0; } }
+        button { background: rgba(255,255,255,0.2); border: none; padding: 15px 30px; font-size: 1.2rem; color: white; border-radius: 50px; cursor: pointer; transition: all 0.3s; margin-top: 20px; }
+        button:hover { background: rgba(255,255,255,0.4); transform: scale(1.05); }
+    </style>
+</head>
+<body>
+    <div class="fireworks" id="fireworks"></div>
+    <div class="container">
+        <h1>Happy New Year, My Love Mannu! 🎉✨</h1>
+        <div class="heart">💖</div>
+        <p>2026 will be our best year yet. Thank you for making every moment magical. I love you more than words can say! 🌟</p>
+        <p>Click to light up the sky for us! 💫</p>
+        <button onclick="launchFireworks()">Surprise Fireworks! 🎆</button>
+    </div>
+    <script>
+        // Snowflakes
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.innerHTML = '❄️';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            snowflake.style.opacity = Math.random();
+            document.body.appendChild(snowflake);
+            setTimeout(() => snowflake.remove(), 5000);
+        }
+        setInterval(createSnowflake, 200);
+
+        // Fireworks
+        function launchFireworks() {
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const firework = document.createElement('div');
+                    firework.style.position = 'absolute';
+                    firework.style.left = Math.random() * 100 + 'vw';
+                    firework.style.top = Math.random() * 100 + 'vh';
+                    firework.style.fontSize = '20px';
+                    firework.innerHTML = ['🎆','🎇','✨','💥','🌟'][Math.floor(Math.random()*5)];
+                    firework.style.animation = 'glow 1s ease-out forwards, fadeOut 2s 1s forwards';
+                    document.getElementById('fireworks').appendChild(firework);
+                    setTimeout(() => firework.remove(), 3000);
+                }, i * 50);
+            }
+        }
+    </script>
+</body>
+</html>
